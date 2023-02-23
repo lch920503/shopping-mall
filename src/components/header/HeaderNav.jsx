@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 import * as S from "./HeaderNav.styles";
 
 export default function HeaderNav() {
+  const [{ cart }] = useCartContext();
+
   return (
     <S.Header>
       <S.InnerWrapper>
@@ -20,6 +23,7 @@ export default function HeaderNav() {
           <S.CartWrapper>
             <S.CartImage src="/images/icon-shopping-cart.svg" alt="cart" />
             <S.CartText>장바구니</S.CartText>
+            <S.CartItemNumber>{cart?.length}</S.CartItemNumber>
           </S.CartWrapper>
         </Link>
         <Link to="/mypage">

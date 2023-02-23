@@ -1,16 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useCartContext } from "../../context/CartContext";
 import * as S from "./ProductDetail.styles";
+import { useCartContext } from "../../context/CartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
 
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState([]);
   const [count, setCount] = useState(1);
-
-  const { cart, setCart } = useCartContext();
 
   useEffect(() => {
     axios
@@ -33,12 +31,16 @@ export default function ProductDetail() {
     setCount((prev) => prev - 1);
   };
 
+  const [{ cart }, dispatch] = useCartContext();
+
   const handleAddCart = () => {
-    const cartItem = {
-      ...product,
-      count,
-    };
-    setCart([...cart, cartItem]);
+    dispatch({
+      type: "ADD_TO_CART",
+      item: {
+        ...product,
+        quantity: count,
+      },
+    });
   };
 
   return (

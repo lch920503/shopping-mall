@@ -103,3 +103,16 @@ export const MyPageText = styled.span`
   font-size: 12px;
   color: #767676;
 `;
+export const CartItemNumber = styled.div`
+  position: absolute;
+  top: -7px;
+  right: -3px;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background-color: #60bba7;
+  border-radius: 50%;
+`;
