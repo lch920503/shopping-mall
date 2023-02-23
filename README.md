@@ -148,13 +148,6 @@ const handleAddCart = () => {
       quantity: count,
     },
   });
-
-  // reducer, context API 사용 전 아이템 추가하는 코드
-  // const cartItem = {
-  //   ...product,
-  //   quantity: count,
-  // };
-  // setCart([...cart, cartItem]);
 };
 ```
 
