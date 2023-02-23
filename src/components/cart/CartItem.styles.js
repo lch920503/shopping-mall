@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartProductContainer = styled.section`
+export const CartProductContainer = styled.li`
   position: relative;
   height: 200px;
   border-radius: 10px;
@@ -134,9 +134,10 @@ export const ProductRemoveWrapper = styled.div`
   height: 15px;
   cursor: pointer;
 
-  img {
+  button {
     width: 100%;
     height: 100%;
+    background: url("/images/icon-delete.svg") no-repeat center center / 100%;
   }
 `;
 export const TotalContainer = styled.div`

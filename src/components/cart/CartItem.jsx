@@ -1,6 +1,6 @@
 import * as S from "./CartItem.styles";
 
-export default function CartItem() {
+export default function CartItem({ item }) {
   return (
     <S.CartProductContainer>
       <S.InputWrapper>
@@ -8,7 +8,7 @@ export default function CartItem() {
       </S.InputWrapper>
       <S.CartProductWrapper>
         <S.CartProductImageWrapper>
-          <S.CartProductImage src="images/image001.png" alt="product-img" />
+          <S.CartProductImage src={item.image} alt={item.name} />
         </S.CartProductImageWrapper>
       </S.CartProductWrapper>
       <S.CartProductCountWrapper>
@@ -16,7 +16,7 @@ export default function CartItem() {
           <S.MinusButton>
             <img src="/images/icon-minus-line.svg" alt="minus" />
           </S.MinusButton>
-          <S.CountNum>5</S.CountNum>
+          <S.CountNum>{item.quantity}</S.CountNum>
           <S.PlusButton>
             <img src="/images/icon-plus-line.svg" alt="plus" />
           </S.PlusButton>
@@ -27,7 +27,7 @@ export default function CartItem() {
         <S.SubmitButton>주문하기</S.SubmitButton>
       </S.CartProductPriceWrapper>
       <S.ProductRemoveWrapper>
-        <img src="/images/icon-delete.svg" alt="delete" />
+        <button type="button" />
       </S.ProductRemoveWrapper>
     </S.CartProductContainer>
   );

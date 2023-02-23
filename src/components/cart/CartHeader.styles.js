@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const CartContainer = styled.div`
-  padding: 120px 50px;
-
-  @media screen and (max-width: 768px) {
-    padding: 120px 30px;
-  }
-`;
 export const Header = styled.header`
   display: flex;
   justify-content: center;
