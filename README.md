@@ -1,70 +1,227 @@
-# Getting Started with Create React App
+## 구현사항
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[✔] 장바구니에 상품 추가  
+[✔] 장바구니 상품 삭제  
+[✔] 장바구니에서 상품의 수량 변경  
+[✔] 전체선택, 전체선택 해제  
+[ ] 선택된 상품에 따라 총 결제 금액 변경  
+[✔] 필터 (최신순, 낮은가격, 높은가격)  
+[✔] axios를 이용해 데이터 fetcing.
 
-## Available Scripts
+## 어려웠던 점
 
-In the project directory, you can run:
+- 장바구니 기능 구현을 위해 Context API와 reducer를 연결하는 부분.
+- 장바구니에 중복 아이템을 체크하여 수량만 변경하는 reducer 로직.
+- 장바구니에 해당 아이템의 id 값 가져오는 방법.
 
-### `npm start`
+## 해결 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Youtube와 Udemy 강의를 병행하여 반복 시청 및 코드 정리 후 구현 완료.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 주요 코드
 
-### `npm test`
+- cart-reducer.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+export const initialState = {
+  cart: [],
+};
 
-### `npm run build`
+export default function cartReducer(state, action) {
+  switch (action.type) {
+    case "ADD_TO_CART": {
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === parseInt(action.item.id)
+      );
+      const hasItem = state.cart[itemIndex];
+      let updatedItems;
+      if (hasItem) {
+        const updatedItem = {
+          ...hasItem,
+          quantity: hasItem.quantity + action.item.quantity,
+        };
+        updatedItems = [...state.cart];
+        updatedItems[itemIndex] = updatedItem;
+      } else {
+        updatedItems = state.cart.concat(action.item);
+      }
+      return {
+        ...state,
+        cart: updatedItems,
+      };
+    }
+    case "REMOVE_ITEM": {
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === parseInt(action.item.id)
+      );
+      const hasItem = state.cart[itemIndex];
+      let updatedItems;
+      if (hasItem.quantity === 1) {
+        updatedItems = state.cart.filter(
+          (item) => item.id !== parseInt(action.item.id)
+        );
+      } else {
+        const updatedItem = {
+          ...hasItem,
+          quantity: hasItem.quantity - 1,
+        };
+        updatedItems = [...state.cart];
+        updatedItems[itemIndex] = updatedItem;
+      }
+      return {
+        ...state,
+        cart: updatedItems,
+      };
+    }
+    case "DELETE_ITEM": {
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === parseInt(action.item.id)
+      );
+      const hasItem = state.cart[itemIndex];
+      let updatedItems;
+      if (hasItem) {
+        updatedItems = state.cart.filter(
+          (item) => item.id !== parseInt(action.item.id)
+        );
+      }
+      return {
+        ...state,
+        cart: updatedItems,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- App.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+function App() {
+  return (
+    <CartContextProvider initialState={initialState} cartReducer={cartReducer}>
+      <HeaderNav />
+      <Outlet>
+        <main>
+          <HomePage />
+        </main>
+      </Outlet>
+    </CartContextProvider>
+  );
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default App;
+```
 
-### `npm run eject`
+- CartContext.jsx
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+import { createContext, useContext, useReducer } from "react";
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const CartContext = createContext();
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+export function CartContextProvider({ cartReducer, initialState, children }) {
+  return (
+    <CartContext.Provider value={useReducer(cartReducer, initialState)}>
+      {children}
+    </CartContext.Provider>
+  );
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export function useCartContext() {
+  return useContext(CartContext);
+}
+```
 
-## Learn More
+- ProductDetail.jsx
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+const [{ cart }, dispatch] = useCartContext();
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const handleAddCart = () => {
+  dispatch({
+    type: "ADD_TO_CART",
+    item: {
+      ...product,
+      quantity: count,
+    },
+  });
 
-### Code Splitting
+  // reducer, context API 사용 전 아이템 추가하는 코드
+  // const cartItem = {
+  //   ...product,
+  //   quantity: count,
+  // };
+  // setCart([...cart, cartItem]);
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- CartList.jsx
 
-### Analyzing the Bundle Size
+```javascript
+import { useCartContext } from "../../context/CartContext";
+import * as S from "./CartList.styles";
+import CartItem from "./CartItem";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+export default function CartList() {
+  const [{ cart }, dispatch] = useCartContext();
 
-### Making a Progressive Web App
+  const handleAddCart = (cart) => {
+    dispatch({
+      type: "ADD_TO_CART",
+      item: {
+        ...cart,
+        quantity: 1,
+      },
+    });
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  const handleRemoveCart = (id) => {
+    dispatch({
+      type: "REMOVE_ITEM",
+      item: {
+        id,
+      },
+    });
+  };
 
-### Advanced Configuration
+  const handleDeleteCart = (id) => {
+    dispatch({
+      type: "DELETE_ITEM",
+      item: {
+        id,
+      },
+    });
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  return (
+    <>
+      {cart.length !== 0 && (
+        <S.CartItemList>
+          {cart.map((item, index) => (
+            <CartItem
+              key={cart[index].id}
+              item={item}
+              handleRemoveCart={handleRemoveCart.bind(null, cart[index].id)}
+              handleAddCart={handleAddCart.bind(null, item)}
+              handleDeleteCart={handleDeleteCart.bind(null, cart[index].id)}
+            />
+          ))}
+        </S.CartItemList>
+      )}
+      {cart.length === 0 && (
+        <S.EmptyCartBox>
+          <S.EmptyCartText>장바구니에 담긴 상품이 없습니다.</S.EmptyCartText>
+        </S.EmptyCartBox>
+      )}
+    </>
+  );
+}
+```
 
-### Deployment
+## 회고
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Reducer와 Context API를 연결하는 방법 및 state와 dispatch 구현 로직 => 반복 이해 필요.  
+장바구니에 중복 아이템을 체크하여 수량만 변경하는 reducer 로직 => 반복 이해 필요.
