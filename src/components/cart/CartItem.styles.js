@@ -12,8 +12,12 @@ export const CartProductContainer = styled.li`
   align-items: center;
 `;
 export const InputWrapper = styled.div`
-  width: 20%;
+  width: 15%;
   text-align: center;
+
+  @media screen and (max-width: 1024px) {
+    width: 10%;
+  }
 `;
 export const CartProductInput = styled.input`
   width: 20px;
@@ -33,13 +37,22 @@ export const CartProductWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 26.6667%;
+  width: 31.6667%;
   text-align: center;
+
+  @media screen and (max-width: 1024px) {
+    width: 50%;
+  }
 `;
 export const CartProductImageWrapper = styled.div`
   width: 160px;
   height: 160px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1024px) {
+    width: 135px;
+    height: 135px;
+  }
 `;
 export const CartProductImage = styled.img`
   width: 100%;
@@ -71,6 +84,10 @@ export const CartProductInfoDelivery = styled.p`
 `;
 export const CartProductCountWrapper = styled.div`
   width: 26.6667%;
+
+  @media screen and (max-width: 1024px) {
+    width: 20%;
+  }
 `;
 export const CartProductCountBox = styled.div`
   display: flex;
@@ -82,15 +99,15 @@ export const CartProductCountBox = styled.div`
   padding: 0 12px;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
+
+  @media screen and (max-width: 1024px) {
+    width: 90px;
+  }
 `;
 export const MinusButton = styled.button`
   width: 10px;
   height: 18px;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  background: url("/images/icon-minus-line.svg") no-repeat center center / 100%;
 `;
 export const CountNum = styled.span`
   width: 50%;
@@ -99,11 +116,7 @@ export const CountNum = styled.span`
 export const PlusButton = styled.button`
   width: 10px;
   height: 18px;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  background: url("/images/icon-plus-line.svg") no-repeat center center / 100%;
 `;
 export const CartProductPriceWrapper = styled.div`
   display: flex;
@@ -111,6 +124,10 @@ export const CartProductPriceWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 26.6667%;
+
+  @media screen and (max-width: 1024px) {
+    width: 20%;
+  }
 `;
 export const TotalPrice = styled.p`
   font-size: 18px;
@@ -123,8 +140,12 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   border: none;
   font-weight: 500;
-  font-size: 16px;
   color: #fff;
+
+  @media screen and (max-width: 1024px) {
+    width: 100px;
+    font-size: 14px;
+  }
 `;
 export const ProductRemoveWrapper = styled.div`
   position: absolute;

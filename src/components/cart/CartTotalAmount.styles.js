@@ -37,7 +37,7 @@ export const MinusImage = styled.div`
   margin: 0 auto;
   border-radius: 50%;
   background: #fff url("/images/icon-minus-line.svg") no-repeat center center /
-    18px 18px;
+    15px 15px;
 `;
 export const DiscountPriceWrapper = styled.div`
   width: calc(100% / 6);
@@ -65,7 +65,7 @@ export const PlusImage = styled.div`
   margin: 0 auto;
   border-radius: 50%;
   background: #fff url("/images/icon-plus-line.svg") no-repeat center center /
-    18px 18px;
+    15px 15px;
 `;
 export const DeliveryPriceWrapper = styled.div`
   width: calc(100% / 6);
