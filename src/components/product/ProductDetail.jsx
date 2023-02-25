@@ -31,7 +31,7 @@ export default function ProductDetail() {
     setCount((prev) => prev - 1);
   };
 
-  const [{ cart }, dispatch] = useCartContext();
+  const [{ cart }, dispatch] = useCartContext(); //eslint-disable-line no-unused-vars
 
   const handleAddCart = () => {
     dispatch({
