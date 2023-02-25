@@ -45,7 +45,7 @@
     {
       "id": 7,
       "name": "스프링 줄노트",
-      "provider": "집",
+      "provider": "numpy",
       "price": 7800,
       "image": "/images/image007.jpg"
     },
@@ -54,7 +54,7 @@
       "name": "세계지도",
       "provider": "우당탕탕",
       "price": 5900,
-      "image": "/images/image008.jpg"
+      "image": "/images/image009.jpg"
     }
   ]
 }
