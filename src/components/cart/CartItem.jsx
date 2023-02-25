@@ -42,7 +42,6 @@ export default function CartItem({
         </S.CartProductCountBox>
       </S.CartProductCountWrapper>
       <S.CartProductPriceWrapper>
-        <S.TotalPrice></S.TotalPrice>
         <S.SubmitButton>주문하기</S.SubmitButton>
       </S.CartProductPriceWrapper>
       <S.ProductRemoveWrapper>

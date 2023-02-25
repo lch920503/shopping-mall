@@ -40,11 +40,12 @@ export const CartProductWrapper = styled.div`
   width: 31.6667%;
   text-align: center;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     width: 50%;
   }
 `;
 export const CartProductImageWrapper = styled.div`
+  flex-shrink: 0;
   width: 160px;
   height: 160px;
   border-radius: 10px;
@@ -62,6 +63,10 @@ export const CartProductImage = styled.img`
 export const CartProductInfoWrapper = styled.div`
   width: 150px;
   margin-left: 36px;
+
+  @media screen and (max-width: 1024px) {
+    margin-left: 18px;
+  }
 `;
 export const CartProductInfoSeller = styled.p`
   font-size: 12px;
@@ -85,7 +90,7 @@ export const CartProductInfoDelivery = styled.p`
 export const CartProductCountWrapper = styled.div`
   width: 26.6667%;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     width: 20%;
   }
 `;
@@ -125,7 +130,7 @@ export const CartProductPriceWrapper = styled.div`
   justify-content: center;
   width: 26.6667%;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     width: 20%;
   }
 `;
