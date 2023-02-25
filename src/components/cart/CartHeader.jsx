@@ -1,6 +1,6 @@
 import * as S from "./CartHeader.styles";
 
-export default function CartHeader() {
+export default function CartHeader({ handleAllCheck, isAllChecked }) {
   return (
     <>
       <S.Header>
@@ -8,12 +8,15 @@ export default function CartHeader() {
       </S.Header>
       <S.TopMenu>
         <S.InputWrapper>
-          <S.TopMenuInput type="checkbox" />
+          <S.TopMenuInput
+            type="checkbox"
+            onChange={(e) => handleAllCheck(e.currentTarget.checked)}
+            checked={isAllChecked}
+          />
         </S.InputWrapper>
         <S.TopMenuText>상품정보</S.TopMenuText>
         <S.TopMenuText>수량</S.TopMenuText>
         <S.TopMenuText>상품금액</S.TopMenuText>
-        <S.TopMenuAll>전체선택</S.TopMenuAll>
       </S.TopMenu>
     </>
   );

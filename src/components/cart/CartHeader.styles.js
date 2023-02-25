@@ -21,6 +21,11 @@ export const TopMenuInput = styled.input`
   border-radius: 50%;
   appearance: none;
   cursor: pointer;
+
+  &:checked {
+    background: #60bba7;
+    border: none;
+  }
 `;
 export const TopMenuText = styled.span`
   disply: block;
