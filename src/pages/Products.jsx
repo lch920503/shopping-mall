@@ -1,4 +1,4 @@
-import ProductDetail from "../components/productDetail/ProductDetail";
+import ProductDetail from "../components/product/ProductDetail";
 
 export default function ProductsPage() {
   return <ProductDetail />;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductItem from "../productItem/ProductItem";
+import ProductItem from "./ProductItem";
 import * as S from "./ProductList.styles";
 
 export default function ProductList() {
