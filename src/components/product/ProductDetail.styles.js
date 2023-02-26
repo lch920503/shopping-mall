@@ -116,6 +116,10 @@ export const AmountWrapper = styled.div`
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 30px;
+
+  @media screen and (max-width: 480px) {
+    height: 45px;
+  }
 `;
 export const CountButton = styled.button``;
 export const Minus = styled.img`
@@ -234,9 +238,9 @@ export const BuyButton = styled.button`
     margin-right: 32px;
   }
 
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 480px) {
     margin-right: 24px;
-    font-size: 14px;
+    font-size: 15px;
   }
 `;
 export const CartButton = styled.button`
@@ -250,7 +254,7 @@ export const CartButton = styled.button`
   font-weight: bold;
   color: #fff;
 
-  @media screen and (max-width: 360px) {
-    font-size: 14px;
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
   }
 `;
