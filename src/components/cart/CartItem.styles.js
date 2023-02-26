@@ -10,6 +10,12 @@ export const CartProductContainer = styled.li`
   padding: 0 30px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 30px;
+  }
 `;
 export const InputWrapper = styled.div`
   width: 15%;
@@ -43,6 +49,15 @@ export const CartProductWrapper = styled.div`
   @media screen and (max-width: 1280px) {
     width: 50%;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 export const CartProductImageWrapper = styled.div`
   flex-shrink: 0;
@@ -59,13 +74,18 @@ export const CartProductImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 `;
 export const CartProductInfoWrapper = styled.div`
-  width: 150px;
   margin-left: 36px;
 
   @media screen and (max-width: 1024px) {
     margin-left: 18px;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 0;
+    margin-top: 10px;
   }
 `;
 export const CartProductInfoSeller = styled.p`
@@ -93,6 +113,11 @@ export const CartProductCountWrapper = styled.div`
   @media screen and (max-width: 1280px) {
     width: 20%;
   }
+
+  @media screen and (max-width: 768px) {
+    width: calc(50% - 15px);
+    margin-right: 15px;
+  }
 `;
 export const CartProductCountBox = styled.div`
   display: flex;
@@ -107,6 +132,10 @@ export const CartProductCountBox = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: 90px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 export const MinusButton = styled.button`
@@ -133,6 +162,11 @@ export const CartProductPriceWrapper = styled.div`
   @media screen and (max-width: 1280px) {
     width: 20%;
   }
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+    width: 50%;
+  }
 `;
 export const TotalPrice = styled.p`
   font-size: 18px;
@@ -150,6 +184,11 @@ export const SubmitButton = styled.button`
   @media screen and (max-width: 1024px) {
     width: 100px;
     font-size: 14px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 45px;
   }
 `;
 export const ProductRemoveWrapper = styled.div`

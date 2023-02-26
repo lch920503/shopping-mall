@@ -28,7 +28,7 @@ export const TopMenuInput = styled.input`
   }
 `;
 export const TopMenuText = styled.span`
-  disply: block;
+  display: block;
   width: 26.6667%;
   text-align: center;
 `;
@@ -41,4 +41,8 @@ export const TopMenuAll = styled.p`
 export const InputWrapper = styled.div`
   width: 20%;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    width: 15%;
+  }
 `;

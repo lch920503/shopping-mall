@@ -9,6 +9,13 @@ export const TotalAmountContainer = styled.div`
   margin: 0 auto;
   margin-top: 35px;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 15px;
+    row-gap: 20px;
+  }
 `;
 
 export const TotalPriceWrapper = styled.div`
@@ -17,6 +24,9 @@ export const TotalPriceWrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: calc((100% - 20px) / 4);
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 export const TotalPriceText = styled.p`
@@ -46,6 +56,9 @@ export const DiscountPriceWrapper = styled.div`
   @media screen and (max-width: 1024px) {
     width: calc((100% - 20px) / 4);
   }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const DiscountPriceText = styled.p`
   margin-bottom: 12px;
@@ -74,6 +87,9 @@ export const DeliveryPriceWrapper = styled.div`
   @media screen and (max-width: 1024px) {
     width: calc((100% - 20px) / 4);
   }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const DeliveryPriceText = styled.p`
   margin-bottom: 12px;
@@ -85,6 +101,9 @@ export const PaymentWrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: calc((100% - 20px) / 4);
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 export const PaymentText = styled.p`

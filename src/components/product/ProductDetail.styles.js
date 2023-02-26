@@ -214,7 +214,7 @@ export const ButtonWrapper = styled.div`
     height: 60px;
 
     @media screen and (max-width: 768px) {
-      height: 40px;
+      height: 45px;
     }
   }
 `;
