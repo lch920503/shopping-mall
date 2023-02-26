@@ -26,12 +26,12 @@ export default function HeaderNav() {
             <S.CartItemNumber>{cart?.length}</S.CartItemNumber>
           </S.CartWrapper>
         </Link>
-        <Link to="/mypage">
+        <div>
           <S.MyPageWrapper>
             <S.MyPageImage src="/images/icon-user.svg" alt="user" />
             <S.MyPageText>로그인</S.MyPageText>
           </S.MyPageWrapper>
-        </Link>
+        </div>
       </S.MenuWrapper>
     </S.Header>
   );
